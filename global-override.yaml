@@ -214,6 +214,7 @@ rule-providers:
     type: http
 
 +rules:
+  - "RULE-SET,Bing,DIRECT"
   - "RULE-SET,OneDrive,DIRECT"
   - "RULE-SET,Microsoft,DIRECT"
   - "RULE-SET,BilibiliHMT,DIRECT"
