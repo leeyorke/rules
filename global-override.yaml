@@ -215,6 +215,9 @@ rule-providers:
 
 +rules:
   - "DOMAIN-SUFFIX,Bing.com,DIRECT"
+  - "DOMAIN-SUFFIX,yandex.com,DIRECT"
+  - "DOMAIN-SUFFIX,sublimetext.com,REJECT"
+  - "DOMAIN-SUFFIX,sublimehq.com,REJECT"
   - "RULE-SET,OneDrive,DIRECT"
   - "RULE-SET,Microsoft,DIRECT"
   - "RULE-SET,BilibiliHMT,DIRECT"
