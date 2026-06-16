@@ -51,9 +51,9 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  Bing:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list
-    path: ./ruleset/Bing.list
+  Copilot:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/copilot.list
+    path: ./ruleset/copilot.list
     behavior: classical
     interval: 86400
     format: text
@@ -214,7 +214,7 @@ rule-providers:
     type: http
 
 +rules:
-  - "RULE-SET,Bing,DIRECT"
+  - "DOMAIN-SUFFIX,Bing.com,DIRECT"
   - "RULE-SET,OneDrive,DIRECT"
   - "RULE-SET,Microsoft,DIRECT"
   - "RULE-SET,BilibiliHMT,DIRECT"
