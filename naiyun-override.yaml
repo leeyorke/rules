@@ -18,5 +18,5 @@ rule-providers:
     type: http
 
 +rules:
-  - "RULE-SET,Copilot,Research + AI"
-  - "RULE-SET,Media,Streaming"
+  - "RULE-SET,Copilot,🤖 AI服务"
+  - "RULE-SET,Media,🌍 国外媒体"
