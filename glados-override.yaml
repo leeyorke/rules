@@ -1,0 +1,14 @@
+
+# https://mihomo.party/docs/guide/override/yaml
+
+rule-providers:
+  Copilot:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/copilot.list
+    path: ./ruleset/copilot.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
++rules:
+  - "RULE-SET,Copilot,Research + AI"
