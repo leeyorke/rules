@@ -212,15 +212,24 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Direct:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/direct.list
+    path: ./ruleset/Direct.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Reject:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/reject.list
+    path: ./ruleset/Reject.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 
 +rules:
-  - "DOMAIN-SUFFIX,Bing.com,DIRECT"
-  - "DOMAIN-SUFFIX,yandex.com,DIRECT"
-  - "DOMAIN-SUFFIX,sublimetext.com,REJECT"
-  - "DOMAIN-SUFFIX,sublimehq.com,REJECT"
-  - "DOMAIN-SUFFIX,favicon.im,DIRECT"
-  - "DOMAIN-SUFFIX,anxcye.com,DIRECT"
-  - "RULE-SET,OneDrive,DIRECT"
+  - "RULE-SET,Direct,DIRECT"
+  - "RULE-SET,Reject,REJECT"
   - "RULE-SET,Microsoft,DIRECT"
   - "RULE-SET,BilibiliHMT,DIRECT"
   - "RULE-SET,Bilibili,DIRECT"
