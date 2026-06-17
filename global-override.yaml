@@ -218,8 +218,8 @@ rule-providers:
   - "DOMAIN-SUFFIX,yandex.com,DIRECT"
   - "DOMAIN-SUFFIX,sublimetext.com,REJECT"
   - "DOMAIN-SUFFIX,sublimehq.com,REJECT"
-  - DOMAIN-SUFFIX,favicon.im,DIRECT
-  - DOMAIN-SUFFIX,anxcye.com,DIRECT
+  - "DOMAIN-SUFFIX,favicon.im,DIRECT"
+  - "DOMAIN-SUFFIX,anxcye.com,DIRECT"
   - "RULE-SET,OneDrive,DIRECT"
   - "RULE-SET,Microsoft,DIRECT"
   - "RULE-SET,BilibiliHMT,DIRECT"
