@@ -285,8 +285,8 @@ rule-providers:
     format: text
     type: http
   Microsoft:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list
-    path: ./rule-providers/Microsoft.list
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/microsoft.list
+    path: ./rule-providers/microsoft.list
     behavior: classical
     interval: 86400
     format: text
@@ -497,6 +497,7 @@ rules:
   - RULE-SET,OpenAi,人工智能
   - RULE-SET,Grok,人工智能
   - RULE-SET,Copilot,人工智能
+  - RULE-SET,Microsoft,微软服务
   - RULE-SET,InterMedia,国际媒体
   - RULE-SET,Google,国际媒体
   - RULE-SET,GoogleFCM,国际媒体
