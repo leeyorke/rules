@@ -63,12 +63,22 @@ proxies: null
 
 
 proxy-providers:
-# 把█████████████换成你的订阅链接
+# 把█████████████换成你的订阅链接,同时阅两个服务
   provider1:
     type: http
     url: █████████████
     interval: 86400
     path: ./proxy_providers/provider1.yaml
+    health-check:
+      enable: true
+      interval: 1800
+      url: http://www.gstatic.com/generate_204
+
+  provider2:
+    type: http
+    url: █████████████
+    interval: 86400
+    path: ./proxy_providers/provider2.yaml
     health-check:
       enable: true
       interval: 1800
@@ -80,6 +90,7 @@ proxy-groups:
     type: select
     use:
     - provider1
+    - provider2
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
@@ -96,7 +107,8 @@ proxy-groups:
     filter: 台|TW|(?i)Taiwan
     type: select
     use:
-    - TWSub
+    - provider1
+    - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -104,7 +116,8 @@ proxy-groups:
     filter: 日|JP|(?i)Japan
     type: select
     use:
-    - JPSub
+    - provider1
+    - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -112,7 +125,8 @@ proxy-groups:
     filter: 美|US|(?i)States|American
     type: select
     use:
-    - USSub
+    - provider1
+    - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -120,7 +134,8 @@ proxy-groups:
     filter: 新|狮|獅|SG|(?i)Singapore
     type: select
     use:
-    - SGSub
+    - provider1
+    - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -476,7 +491,7 @@ rules:
   - RULE-SET,Video,中国媒体
   - RULE-SET,Netflix,国际媒体
   - RULE-SET,Telegram,国际媒体
-  - RULE-SET,Youtube,国际媒体
+  - RULE-SET,YouTube,国际媒体
   - RULE-SET,Github,全球加速
   - RULE-SET,Claude,人工智能
   - RULE-SET,OpenAi,人工智能
@@ -487,7 +502,7 @@ rules:
   - RULE-SET,GoogleFCM,国际媒体
   - RULE-SET,GoogleCN,国际媒体
   - RULE-SET,Steam,全球加速
-  - RULE-SET,SteamCN,国内直连
+  - RULE-SET,SteamCN,全国直连
 
 
   # > 大分流
