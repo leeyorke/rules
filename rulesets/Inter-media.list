@@ -1,5 +1,11 @@
 # International media
 
+# cdn
+DOMAIN-SUFFIX,braze.com
+DOMAIN-SUFFIX,appsflyersdk.com
+DOMAIN-SUFFIX,mixpanel.com
+DOMAIN-SUFFIX,crashlytics.com
+
 # reddit
 DOMAIN-SUFFIX,redd.it
 DOMAIN-SUFFIX,reddit.com
