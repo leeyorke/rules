@@ -1,5 +1,6 @@
-#Clash莫离配置
-#配置地址：https://github.com/Moli-X/Resources/raw/main/Clash/Clash.yml
+# Clash leeyorke配置
+# 配置地址：https://github.com/Moli-X/Resources/raw/main/Clash/Clash.yml
+# mihomo文档: https://wiki.metacubex.one/config/proxy-providers/
 # GitHub仓库地址：https://github.com/Moli-X  发现BUG请反馈: @GodMoliibot
 # 相关频道: https://t.me/QuantX
 # 相关群组：https://t.me/Skill_XX
@@ -63,59 +64,14 @@ proxies: null
 
 proxy-providers:
 # 把█████████████换成你的订阅链接
-  Subscribe:
+  provider1:
     type: http
     url: █████████████
     interval: 86400
-    path: ./GLlist.yaml
+    path: ./proxy_providers/provider1.yaml
     health-check:
       enable: true
       interval: 1800
-      url: http://www.gstatic.com/generate_204
-
-  HKSub:
-    filter: 港|HK|(?i)Hong
-    type: file
-    path: ./GLlist.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-
-  TWSub:
-    filter: 台|TW|(?i)Taiwan
-    type: file
-    path: ./GLlist.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-
-  SGSub:
-    filter: 新|狮|獅|SG|(?i)Singapore
-    type: file
-    path: ./GLlist.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-
-  JPSub:
-    filter: 日|JP|(?i)Japan
-    type: file
-    path: ./GLlist.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-
-  USSub:
-    filter: 美|US|(?i)States|American
-    type: file
-    path: ./GLlist.yaml
-    health-check:
-      enable: true
-      interval: 600
       url: http://www.gstatic.com/generate_204
 
 
@@ -123,35 +79,37 @@ proxy-groups:
   - name: "全球服务"
     type: select
     use:
-      - Subscribe
+    - provider1
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
   - name: "香港服务"
+    filter: 港|HK|(?i)Hong
     type: select
     use:
-    - HKSub
+    - provider1
+    - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
-
   - name: "台湾服务"
+    filter: 台|TW|(?i)Taiwan
     type: select
     use:
     - TWSub
     url: http://www.gstatic.com/generate_204
     interval: 900
 
-
   - name: "日本服务"
+    filter: 日|JP|(?i)Japan
     type: select
     use:
     - JPSub
     url: http://www.gstatic.com/generate_204
     interval: 900
 
-
   - name: "美国服务"
+    filter: 美|US|(?i)States|American
     type: select
     use:
     - USSub
@@ -159,12 +117,12 @@ proxy-groups:
     interval: 900
 
   - name: "新加坡服"
+    filter: 新|狮|獅|SG|(?i)Singapore
     type: select
     use:
     - SGSub
     url: http://www.gstatic.com/generate_204
     interval: 900
-
 
 
   - name: "全球加速"
@@ -176,6 +134,7 @@ proxy-groups:
       - 全国直连
       - 台湾服务
       - 日本服务
+      - 新加坡服
 
   - name: "人工智能"
     type: select
@@ -192,7 +151,6 @@ proxy-groups:
       - 全球服务
       - 香港服务
       - 美国服务
-
 
   - name: "国际媒体"
     type: select
@@ -212,7 +170,6 @@ proxy-groups:
       - 全球服务
       - 台湾服务
       - 香港服务
-
 
   - name: 全国直连
     type: select
@@ -259,6 +216,13 @@ rule-providers:
   GoogleCN:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list
     path: ./rule-providers/GoogleCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Google:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/google.list
+    path: ./rule-providers/google.list
     behavior: classical
     interval: 86400
     format: text
@@ -512,17 +476,24 @@ rules:
   - RULE-SET,Video,中国媒体
   - RULE-SET,Netflix,国际媒体
   - RULE-SET,Telegram,国际媒体
+  - RULE-SET,Youtube,国际媒体
   - RULE-SET,Github,全球加速
   - RULE-SET,Claude,人工智能
-  - RULE-SET,OpenAI,人工智能
+  - RULE-SET,OpenAi,人工智能
   - RULE-SET,Grok,人工智能
   - RULE-SET,Copilot,人工智能
   - RULE-SET,InterMedia,国际媒体
-  - RULE-SET,GoogleFCM,全球加速
+  - RULE-SET,Google,国际媒体
+  - RULE-SET,GoogleFCM,国际媒体
+  - RULE-SET,GoogleCN,国际媒体
+  - RULE-SET,Steam,全球加速
+  - RULE-SET,SteamCN,国内直连
+
 
   # > 大分流
-  - RULE-SET,China,DIRECT
-  - RULE-SET,Google,全球加速
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,ChinaMedia,DIRECT
 
   # > 去广告REJECT
   - RULE-SET,Advertising,REJECT
