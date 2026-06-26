@@ -495,6 +495,7 @@ rules:
   - RULE-SET,Github,全球加速
   - RULE-SET,Claude,人工智能
   - RULE-SET,OpenAi,人工智能
+  - RULE-SET,Gemini,人工智能
   - RULE-SET,Grok,人工智能
   - RULE-SET,Copilot,人工智能
   - RULE-SET,Microsoft,微软服务
