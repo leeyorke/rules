@@ -490,12 +490,12 @@ rules:
   - RULE-SET,Netflix,国际媒体
   - RULE-SET,Telegram,国际媒体
   - RULE-SET,YouTube,国际媒体
+  - RULE-SET,Copilot,人工智能
   - RULE-SET,Github,全球加速
   - RULE-SET,Claude,人工智能
   - RULE-SET,OpenAi,人工智能
   - RULE-SET,Gemini,人工智能
   - RULE-SET,Grok,人工智能
-  - RULE-SET,Copilot,人工智能
   - RULE-SET,Microsoft,微软服务
   - RULE-SET,InterMedia,国际媒体
   - RULE-SET,Google,国际媒体
