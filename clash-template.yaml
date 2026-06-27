@@ -156,8 +156,6 @@ proxy-groups:
     proxies:
       - 日本服务
       - 美国服务
-      - 新加坡服
-      - 全球服务
 
   - name: "中国媒体"
     type: select
