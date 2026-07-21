@@ -1,4 +1,3 @@
-
 # https://mihomo.party/docs/guide/override/yaml
 
 rule-providers:
@@ -20,3 +19,4 @@ rule-providers:
 +rules:
   - "RULE-SET,Copilot,Research + AI"
   - "RULE-SET,Media,Streaming"
+  - "DOMAIN-SUFFIX,zenmux.ai,Research + AI"
