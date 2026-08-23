@@ -15,8 +15,16 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  OpenAI:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/openai.list
+    path: ./ruleset/openai.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 
 +rules:
   - "RULE-SET,Copilot,Research + AI"
+  - "RULE-SET,OpenAI,Research + AI"
   - "RULE-SET,Media,Streaming"
   - "DOMAIN-SUFFIX,zenmux.ai,Research + AI"
