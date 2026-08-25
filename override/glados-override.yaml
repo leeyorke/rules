@@ -22,9 +22,17 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Google:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/google.list
+    path: ./ruleset/google.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 
 +rules:
   - "RULE-SET,Copilot,Research + AI"
   - "RULE-SET,OpenAI,Research + AI"
+  - "RULE-SET,Google,Default Proxy"
   - "RULE-SET,Media,Streaming"
   - "DOMAIN-SUFFIX,zenmux.ai,Research + AI"
