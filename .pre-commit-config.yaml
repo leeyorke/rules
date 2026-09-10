@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: rule-convert
+        name: overrid rules convert
+        entry: python -X utf8 yaml2js.py -d ./override
+        language: system
+        pass_filenames: false
