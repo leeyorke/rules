@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import argparse
+import os
+import subprocess
+import sys
 import yaml
 
 from pathlib import Path
@@ -10,9 +13,16 @@ from typing import Optional
 
 def convert_yaml_to_js(yaml_content: str) -> str:
     data = yaml.safe_load(yaml_content)
+    if not isinstance(data, dict):
+        raise ValueError("YAML 顶层必须是 mapping，例如包含 rule-providers / +rules")
 
     rule_providers = data.get("rule-providers", {})
+    if not isinstance(rule_providers, dict):
+        raise ValueError("rule-providers 必须是 mapping")
+
     rules = data.get("+rules") or data.get("rules") or []
+    if not isinstance(rules, list):
+        raise ValueError("rules / +rules 必须是列表")
 
     js_lines = []
     js_lines.append("function main(config) {")
@@ -68,6 +78,52 @@ def convert_file(
     print(f"✓ 已转换: {input_file} → {output_file}")
 
 
+def git(*args: str) -> str:
+    return subprocess.check_output(["git", *args], text=True, encoding="utf-8").strip()
+
+
+def stage_file(path: Path, root: str) -> None:
+    """把生成后的 JS 文件加入暂存区，避免 hook 被误报为修改工作区。"""
+    rel = os.path.relpath(path, root).replace("\\", "/")
+    subprocess.check_call(["git", "-C", root, "add", "--", rel])
+
+
+def run_precommit() -> int:
+    """pre-commit 专用模式：只处理暂存区中改动的 YAML，并暂存生成的 JS。"""
+    root = git("rev-parse", "--show-toplevel")
+    files = git(
+        "-C",
+        root,
+        "diff",
+        "--cached",
+        "--name-only",
+        "-z",
+        "--",
+        "*.yaml",
+        "*.yml",
+    ).split("\0")
+    yaml_files = [Path(item) for item in files if item]
+
+    if not yaml_files:
+        print("暂存区没有新增或修改的 YAML 文件，无需转换。")
+        return 0
+
+    print(f"找到 {len(yaml_files)} 个改动的 YAML 文件，开始转换...\n")
+
+    try:
+        for yaml_file in yaml_files:
+            out_file = yaml_file.with_suffix(".js")
+            convert_file(yaml_file, out_file)
+            stage_file(out_file, root)
+    except Exception as exc:
+        print(f"\n✗ 转换失败: {yaml_file}", file=sys.stderr)
+        print(str(exc), file=sys.stderr)
+        return 1
+
+    print(f"\n全部完成！共转换 {len(yaml_files)} 个 YAML 文件，并已加入暂存区。")
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="把 Clash 覆写 YAML 转换成传统写法的 JS 脚本",
@@ -82,11 +138,19 @@ def main():
   python yaml2js.py -d ./overrides
   python yaml2js.py -d ./overrides -o ./js_output
   python yaml2js.py -d ./overrides --stdout
+
+  # pre-commit 自动模式
+  python yaml2js.py --precommit
 """,
     )
 
-    # 互斥组：要么指定单个文件，要么指定文件夹
+    # 互斥组：要么指定单个文件，要么指定文件夹，要么走 pre-commit 模式
     group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument(
+        "--precommit",
+        action="store_true",
+        help="pre-commit 模式：只转换暂存区中改动的 YAML，并自动加入生成的 JS",
+    )
     group.add_argument(
         "input", type=str, nargs="?", help="输入的单个覆写 YAML 文件路径"
     )
@@ -115,6 +179,9 @@ def main():
     )
 
     args = parser.parse_args()
+
+    if args.precommit:
+        raise SystemExit(run_precommit())
 
     # ---------- 处理文件夹模式 ----------
     if args.dir:
