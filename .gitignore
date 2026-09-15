@@ -2,3 +2,4 @@ clash-*.yaml
 !clash-template.yaml
 .vscode/
 .reasonix/
+tests/

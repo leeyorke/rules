@@ -1,6 +1,5 @@
 # https://mihomo.party/docs/guide/override/yaml
 
-
 rule-providers:
   BilibiliHMT:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/BilibiliHMT.list
@@ -52,7 +51,13 @@ rule-providers:
     format: text
     type: http
 
+# ========== 新增：NCSI 相关规则（最前面强制直连）==========
 +rules:
+  - "DOMAIN-SUFFIX,msftconnecttest.com,DIRECT"
+  - "DOMAIN-SUFFIX,msftncsi.com,DIRECT"
+  - "DOMAIN,www.msftconnecttest.com,DIRECT"
+  - "DOMAIN,dns.msftncsi.com,DIRECT"
+  # 你原来的规则继续保留
   - "RULE-SET,Direct,DIRECT"
   - "RULE-SET,Reject,REJECT"
   - "RULE-SET,BilibiliHMT,DIRECT"
@@ -61,3 +66,13 @@ rule-providers:
   - "RULE-SET,ChinaDomain,DIRECT"
   - "RULE-SET,ChinaCompanyIp,DIRECT"
   - "GEOIP,CN,DIRECT"
+
+# ========== 新增：Fake-IP 过滤（防止 NCSI 被污染）==========
+dns:
+  fake-ip-filter+:
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+    - "www.msftconnecttest.com"
+    - "dns.msftncsi.com"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"

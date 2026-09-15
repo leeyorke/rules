@@ -76,6 +76,10 @@ function main(config) {
   config.rules.unshift("RULE-SET,BilibiliHMT,DIRECT");
   config.rules.unshift("RULE-SET,Reject,REJECT");
   config.rules.unshift("RULE-SET,Direct,DIRECT");
+  config.rules.unshift("DOMAIN,dns.msftncsi.com,DIRECT");
+  config.rules.unshift("DOMAIN,www.msftconnecttest.com,DIRECT");
+  config.rules.unshift("DOMAIN-SUFFIX,msftncsi.com,DIRECT");
+  config.rules.unshift("DOMAIN-SUFFIX,msftconnecttest.com,DIRECT");
 
   return config;
 }
