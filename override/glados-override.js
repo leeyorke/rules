@@ -40,10 +40,20 @@ function main(config) {
     type: "http",
   };
 
+  config['rule-providers']['Gemini'] = {
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/gemini.list",
+    path: "./ruleset/gemini.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
   // ===== 添加规则（插入到最前面） =====
   config.rules.unshift("DOMAIN-SUFFIX,zenmux.ai,Research + AI");
   config.rules.unshift("RULE-SET,Media,Streaming");
-  config.rules.unshift("RULE-SET,Google,Default Proxy");
+  config.rules.unshift("RULE-SET,Google,Research + AI");
+  config.rules.unshift("RULE-SET,Gemini,Research + AI");
   config.rules.unshift("RULE-SET,OpenAI,Research + AI");
   config.rules.unshift("RULE-SET,Copilot,Research + AI");
 

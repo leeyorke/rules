@@ -29,10 +29,18 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Gemini:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/gemini.list
+    path: ./ruleset/gemini.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 
 +rules:
   - "RULE-SET,Copilot,Research + AI"
   - "RULE-SET,OpenAI,Research + AI"
-  - "RULE-SET,Google,Default Proxy"
+  - "RULE-SET,Gemini,Research + AI"
+  - "RULE-SET,Google,Research + AI"
   - "RULE-SET,Media,Streaming"
   - "DOMAIN-SUFFIX,zenmux.ai,Research + AI"
