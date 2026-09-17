@@ -50,6 +50,7 @@ function main(config) {
   };
 
   // ===== 添加规则（插入到最前面） =====
+  config.rules.unshift("DOMAIN-KEYWORD,huggingface,Premium");
   config.rules.unshift("DOMAIN-SUFFIX,zenmux.ai,Research + AI");
   config.rules.unshift("RULE-SET,Media,Streaming");
   config.rules.unshift("RULE-SET,Google,Research + AI");

@@ -44,3 +44,4 @@ rule-providers:
   - "RULE-SET,Google,Research + AI"
   - "RULE-SET,Media,Streaming"
   - "DOMAIN-SUFFIX,zenmux.ai,Research + AI"
+  - "DOMAIN-KEYWORD,huggingface,Premium"
