@@ -56,3 +56,14 @@ DOMAIN-SUFFIX,buzzfeed.com
 DOMAIN-SUFFIX,pewresearch.org
 DOMAIN-SUFFIX,elllo.org
 DOMAIN-SUFFIX,youglish.com
+
+# video
+DOMAIN-SUFFIX,withyoutube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,youtube-nocookie.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtubeeducation.com
+DOMAIN-SUFFIX,youtubegaming.com
+DOMAIN-SUFFIX,youtubekids.com
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,ytimg.com
