@@ -38,10 +38,10 @@ rule-providers:
     type: http
 
 +rules:
+  - "RULE-SET,Media,Streaming"
   - "RULE-SET,Copilot,Research + AI"
   - "RULE-SET,OpenAI,Research + AI"
   - "RULE-SET,Gemini,Research + AI"
   - "RULE-SET,Google,Research + AI"
-  - "RULE-SET,Media,Streaming"
   - "DOMAIN-SUFFIX,zenmux.ai,Research + AI"
   - "DOMAIN-KEYWORD,huggingface,Premium"
