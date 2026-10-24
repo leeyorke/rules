@@ -50,13 +50,13 @@ function main(config) {
   };
 
   // ===== 添加规则（插入到最前面） =====
-  config.rules.unshift("DOMAIN-KEYWORD,huggingface,Premium");
-  config.rules.unshift("DOMAIN-SUFFIX,zenmux.ai,Research + AI");
-  config.rules.unshift("RULE-SET,Google,Research + AI");
-  config.rules.unshift("RULE-SET,Gemini,Research + AI");
-  config.rules.unshift("RULE-SET,OpenAI,Research + AI");
-  config.rules.unshift("RULE-SET,Copilot,Research + AI");
-  config.rules.unshift("RULE-SET,Media,Streaming");
+  config.rules.unshift("DOMAIN-KEYWORD,huggingface,Default Proxy");
+  config.rules.unshift("DOMAIN-SUFFIX,zenmux.ai,Default Proxy");
+  config.rules.unshift("RULE-SET,Google,Default Proxy");
+  config.rules.unshift("RULE-SET,Gemini,Default Proxy");
+  config.rules.unshift("RULE-SET,OpenAI,Default Proxy");
+  config.rules.unshift("RULE-SET,Copilot,Default Proxy");
+  config.rules.unshift("RULE-SET,Media,Default Proxy");
 
   return config;
 }

@@ -38,10 +38,10 @@ rule-providers:
     type: http
 
 +rules:
-  - "RULE-SET,Media,Streaming"
-  - "RULE-SET,Copilot,Research + AI"
-  - "RULE-SET,OpenAI,Research + AI"
-  - "RULE-SET,Gemini,Research + AI"
-  - "RULE-SET,Google,Research + AI"
-  - "DOMAIN-SUFFIX,zenmux.ai,Research + AI"
-  - "DOMAIN-KEYWORD,huggingface,Premium"
+  - "RULE-SET,Media,Default Proxy"
+  - "RULE-SET,Copilot,Default Proxy"
+  - "RULE-SET,OpenAI,Default Proxy"
+  - "RULE-SET,Gemini,Default Proxy"
+  - "RULE-SET,Google,Default Proxy"
+  - "DOMAIN-SUFFIX,zenmux.ai,Default Proxy"
+  - "DOMAIN-KEYWORD,huggingface,Default Proxy"
