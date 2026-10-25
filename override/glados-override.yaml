@@ -36,6 +36,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Microsoft:
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/microsoft.list
+    path: ./ruleset/microsoft.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 
 +rules:
   - "RULE-SET,Media,Default Proxy"
@@ -43,5 +50,6 @@ rule-providers:
   - "RULE-SET,OpenAI,Default Proxy"
   - "RULE-SET,Gemini,Default Proxy"
   - "RULE-SET,Google,Default Proxy"
+  - "RULE-SET,Microsoft,Default Proxy"
   - "DOMAIN-SUFFIX,zenmux.ai,Default Proxy"
   - "DOMAIN-KEYWORD,huggingface,Default Proxy"

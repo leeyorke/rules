@@ -49,9 +49,19 @@ function main(config) {
     type: "http",
   };
 
+  config['rule-providers']['Microsoft'] = {
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/microsoft.list",
+    path: "./ruleset/microsoft.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
   // ===== 添加规则（插入到最前面） =====
   config.rules.unshift("DOMAIN-KEYWORD,huggingface,Default Proxy");
   config.rules.unshift("DOMAIN-SUFFIX,zenmux.ai,Default Proxy");
+  config.rules.unshift("RULE-SET,Microsoft,Default Proxy");
   config.rules.unshift("RULE-SET,Google,Default Proxy");
   config.rules.unshift("RULE-SET,Gemini,Default Proxy");
   config.rules.unshift("RULE-SET,OpenAI,Default Proxy");
