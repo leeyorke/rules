@@ -88,8 +88,12 @@ def stage_file(path: Path, root: str) -> None:
     subprocess.check_call(["git", "-C", root, "add", "--", rel])
 
 
-def run_precommit() -> int:
-    """pre-commit 专用模式：只处理暂存区中改动的 YAML，并暂存生成的 JS。"""
+def run_precommit(root_dir: Optional[str] = None) -> int:
+    """pre-commit 专用模式：只处理暂存区中改动的 YAML，并暂存生成的 JS。
+
+    root_dir 不为空时，只处理该目录下的 YAML（相对于仓库根目录），
+    用于排除根目录等不需要转换的 YAML（如模板文件）。
+    """
     root = git("rev-parse", "--show-toplevel")
     files = git(
         "-C",
@@ -102,10 +106,20 @@ def run_precommit() -> int:
         "*.yaml",
         "*.yml",
     ).split("\0")
+
+    root_prefix = ""
+    if root_dir:
+        # 统一成 / 分隔，并保证以 / 结尾，便于做前缀匹配
+        root_prefix = root_dir.replace("\\", "/").strip("/") + "/"
+        files = [f for f in files if f.replace("\\", "/").startswith(root_prefix)]
+
     yaml_files = [Path(item) for item in files if item]
 
     if not yaml_files:
-        print("暂存区没有新增或修改的 YAML 文件，无需转换。")
+        if root_prefix:
+            print(f"暂存区在 {root_prefix} 下没有新增或修改的 YAML 文件，无需转换。")
+        else:
+            print("暂存区没有新增或修改的 YAML 文件，无需转换。")
         return 0
 
     print(f"找到 {len(yaml_files)} 个改动的 YAML 文件，开始转换...\n")
@@ -161,6 +175,14 @@ def main():
         help="输入文件夹路径，将转换该文件夹下所有 .yaml / .yml 文件",
     )
 
+    # 仅在 --precommit 模式下生效：限定只处理该目录下的暂存 YAML
+    parser.add_argument(
+        "--root",
+        type=str,
+        default=None,
+        help="（仅 --precommit）只处理该目录下的暂存 YAML，用于排除根目录等无需转换的文件",
+    )
+
     parser.add_argument(
         "-o",
         "--output",
@@ -181,7 +203,7 @@ def main():
     args = parser.parse_args()
 
     if args.precommit:
-        raise SystemExit(run_precommit())
+        raise SystemExit(run_precommit(root_dir=args.root))
 
     # ---------- 处理文件夹模式 ----------
     if args.dir:
