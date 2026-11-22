@@ -1,5 +1,6 @@
 clash-*.yaml
 !clash-template.yaml
+!clash-template-from-vless.yaml
 .vscode/
 .reasonix/
 tests/
