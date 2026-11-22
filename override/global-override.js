@@ -72,8 +72,6 @@ function main(config) {
   config.rules.unshift("RULE-SET,ChinaCompanyIp,DIRECT");
   config.rules.unshift("RULE-SET,ChinaDomain,DIRECT");
   config.rules.unshift("RULE-SET,ChinaMedia,DIRECT");
-  config.rules.unshift("RULE-SET,Bilibili,DIRECT");
-  config.rules.unshift("RULE-SET,BilibiliHMT,DIRECT");
   config.rules.unshift("RULE-SET,Reject,REJECT");
   config.rules.unshift("RULE-SET,Direct,DIRECT");
   config.rules.unshift("DOMAIN,dns.msftncsi.com,DIRECT");

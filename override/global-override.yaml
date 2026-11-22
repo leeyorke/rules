@@ -60,8 +60,6 @@ rule-providers:
   # 你原来的规则继续保留
   - "RULE-SET,Direct,DIRECT"
   - "RULE-SET,Reject,REJECT"
-  - "RULE-SET,BilibiliHMT,DIRECT"
-  - "RULE-SET,Bilibili,DIRECT"
   - "RULE-SET,ChinaMedia,DIRECT"
   - "RULE-SET,ChinaDomain,DIRECT"
   - "RULE-SET,ChinaCompanyIp,DIRECT"
