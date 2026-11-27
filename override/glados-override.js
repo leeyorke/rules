@@ -68,7 +68,7 @@ function main(config) {
   };
 
   config['rule-providers']['Twitter'] = {
-    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/video.list",
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/twitter.list",
     path: "./ruleset/twitter.list",
     behavior: "classical",
     interval: 86400,
@@ -77,7 +77,7 @@ function main(config) {
   };
 
   config['rule-providers']['Grok'] = {
-    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/video.list",
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/grok.list",
     path: "./ruleset/grok.list",
     behavior: "classical",
     interval: 86400,
