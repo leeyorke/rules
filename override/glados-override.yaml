@@ -91,7 +91,7 @@ rule-providers:
   - "RULE-SET,ChinaMedia,DIRECT"
   - "RULE-SET,Direct,DIRECT"
   - "RULE-SET,Reject,REJECT"
-  - "RULE-SET,Reject,REJECT"
+  - "RULE-SET,Twitter,Default Proxy"
   - "RULE-SET,Media,Default Proxy"
   - "RULE-SET,Copilot,Default Proxy"
   - "RULE-SET,Grok,Default Proxy"

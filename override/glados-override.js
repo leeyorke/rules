@@ -122,7 +122,7 @@ function main(config) {
   config.rules.unshift("RULE-SET,Grok,Default Proxy");
   config.rules.unshift("RULE-SET,Copilot,Default Proxy");
   config.rules.unshift("RULE-SET,Media,Default Proxy");
-  config.rules.unshift("RULE-SET,Reject,REJECT");
+  config.rules.unshift("RULE-SET,Twitter,Default Proxy");
   config.rules.unshift("RULE-SET,Reject,REJECT");
   config.rules.unshift("RULE-SET,Direct,DIRECT");
   config.rules.unshift("RULE-SET,ChinaMedia,DIRECT");
