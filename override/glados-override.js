@@ -86,7 +86,7 @@ function main(config) {
   };
 
   config['rule-providers']['ChinaMedia'] = {
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list",
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/china-media.list",
     path: "./ruleset/ChinaMedia.list",
     behavior: "classical",
     interval: 86400,

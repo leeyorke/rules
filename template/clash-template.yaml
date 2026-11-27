@@ -6,17 +6,16 @@
 # 相关群组：https://t.me/Skill_XX
 # 图标备用📮✉️📪📬💫💬💥🔨🥼🚫🔰🙈🍎🎬📺🎱🍐🐝🦁💡🌵🐯🎸💻📽🌏🕹📡🦑🌟🐷🦒🐳🚦📵🎧💊🔓🚦🚥🐼⛔️🈲🌐🎯🖲️🐦🔞🎵📱🚀💳♻️🙈🍱🔂📦🔀⏱
 
-
 mixed-port: 7897
 allow-lan: false
-bind-address: '*'
+bind-address: "*"
 mode: rule
 log-level: info
 external-controller: 127.0.0.1:9090
 hosts:
-  'mtalk.google.com': 108.177.125.188
-  'dl.google.com': 180.163.151.161
-  'dl.l.google.com': 180.163.151.161
+  "mtalk.google.com": 108.177.125.188
+  "dl.google.com": 180.163.151.161
+  "dl.l.google.com": 180.163.151.161
 profile:
   store-selected: false
 dns:
@@ -25,45 +24,43 @@ dns:
   listen: 0.0.0.0:1053
   use-hosts: true
   default-nameserver:
-   - 223.5.5.5
-   - 119.29.29.29
+    - 223.5.5.5
+    - 119.29.29.29
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - '*.lan'
+    - "*.lan"
     - localhost.ptlogin2.qq.com
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - '+.xboxlive.com'
-    - 'msftconnecttest.com'
-    - 'xbox.*.microsoft.com'
-    - '*.battlenet.com.cn'
-    - '*.battlenet.com'
-    - '*.blzstatic.cn'
-    - '*.battle.net'
-    - '*.trendmicro.com'
-    - '*.deltaww.com'
-    - '*.microsoft.com'
+    - "+.srv.nintendo.net"
+    - "+.stun.playstation.net"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "+.xboxlive.com"
+    - "msftconnecttest.com"
+    - "xbox.*.microsoft.com"
+    - "*.battlenet.com.cn"
+    - "*.battlenet.com"
+    - "*.blzstatic.cn"
+    - "*.battle.net"
+    - "*.trendmicro.com"
+    - "*.deltaww.com"
+    - "*.microsoft.com"
 
   nameserver:
-    - 'https://doh.pub/dns-query'
-    - 'https://223.5.5.5/dns-query'
+    - "https://doh.pub/dns-query"
+    - "https://223.5.5.5/dns-query"
   fallback:
-    - 'https://doh.dns.sb/dns-query'
-    - 'https://1.1.1.1/dns-query'
-    - 'tls://8.8.4.4:853'
+    - "https://doh.dns.sb/dns-query"
+    - "https://1.1.1.1/dns-query"
+    - "tls://8.8.4.4:853"
   fallback-filter:
     geoip: true
     geoip-code: CN
 
-
 proxies: null
 
-
 proxy-providers:
-# 把█████████████换成你的订阅链接,同时阅两个服务
+  # 把█████████████换成你的订阅链接,同时阅两个服务
   provider1:
     type: http
     url: █████████████
@@ -84,22 +81,21 @@ proxy-providers:
       interval: 1800
       url: http://www.gstatic.com/generate_204
 
-
 proxy-groups:
   - name: "全球服务"
     type: select
     use:
-    - provider1
-    - provider2
-    url: 'http://www.gstatic.com/generate_204'
+      - provider1
+      - provider2
+    url: "http://www.gstatic.com/generate_204"
     interval: 300
 
   - name: "香港服务"
     filter: 港|HK|(?i)Hong
     type: select
     use:
-    - provider1
-    - provider2
+      - provider1
+      - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -107,8 +103,8 @@ proxy-groups:
     filter: 台|TW|(?i)Taiwan
     type: select
     use:
-    - provider1
-    - provider2
+      - provider1
+      - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -116,8 +112,8 @@ proxy-groups:
     filter: 日|JP|(?i)Japan
     type: select
     use:
-    - provider1
-    - provider2
+      - provider1
+      - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -125,8 +121,8 @@ proxy-groups:
     filter: 美|US|(?i)States|American
     type: select
     use:
-    - provider1
-    - provider2
+      - provider1
+      - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
 
@@ -134,11 +130,10 @@ proxy-groups:
     filter: 新|狮|獅|SG|(?i)Singapore
     type: select
     use:
-    - provider1
-    - provider2
+      - provider1
+      - provider2
     url: http://www.gstatic.com/generate_204
     interval: 900
-
 
   - name: "全球加速"
     type: select
@@ -188,7 +183,6 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-
 
 rule-providers:
   LocalAreaNetwork:
@@ -388,7 +382,7 @@ rule-providers:
     format: text
     type: http
   ChinaMedia:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list
+    url: https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/china-media.list
     path: ./rule-providers/ChinaMedia.list
     behavior: classical
     interval: 86400
@@ -472,7 +466,6 @@ rule-providers:
     format: text
     type: http
 
-
 rules:
   # > 应用分流
   - PROCESS-NAME,lync.exe,DIRECT
@@ -504,7 +497,6 @@ rules:
   - RULE-SET,Steam,全球加速
   - RULE-SET,SteamCN,全国直连
 
-
   # > 大分流
   - RULE-SET,ChinaDomain,DIRECT
   - RULE-SET,ChinaCompanyIp,DIRECT
@@ -516,5 +508,3 @@ rules:
   # > 单分流  - DOMAIN-SUFFIX, - DOMAIN-KEYWORD, ,no-resolve
   - GEOIP,CN,DIRECT
   - MATCH,全球加速
-
-
