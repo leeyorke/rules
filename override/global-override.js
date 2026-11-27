@@ -24,7 +24,7 @@ function main(config) {
 
   config['rule-providers']['ChinaMedia'] = {
     url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/china-media.list",
-    path: "./ruleset/ChinaMedia.list",
+    path: "./ruleset/china-media.list",
     behavior: "classical",
     interval: 86400,
     format: "text",
