@@ -127,6 +127,8 @@ function main(config) {
   config.rules.unshift("RULE-SET,Direct,DIRECT");
   config.rules.unshift("RULE-SET,ChinaMedia,DIRECT");
   config.rules.unshift("RULE-SET,Video,DIRECT");
+  config.rules.unshift("GEOIP,PRIVATE,DIRECT");
+  config.rules.unshift("GEOIP,CN,DIRECT");
 
   return config;
 }

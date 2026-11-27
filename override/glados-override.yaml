@@ -87,6 +87,8 @@ rule-providers:
     type: http
 
 +rules:
+  - GEOIP,CN,DIRECT
+  - GEOIP,PRIVATE,DIRECT
   - "RULE-SET,Video,DIRECT"
   - "RULE-SET,ChinaMedia,DIRECT"
   - "RULE-SET,Direct,DIRECT"

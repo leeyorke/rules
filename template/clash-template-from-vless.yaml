@@ -58,4 +58,6 @@ proxy-groups:
       - DIRECT
 
 rules:
+  - GEOIP,CN,DIRECT
+  - GEOIP,PRIVATE,DIRECT
   - MATCH,🐟 漏网之鱼
