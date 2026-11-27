@@ -1,5 +1,6 @@
 # 规则名称: ChinaMedia
 
+# tencent
 DOMAIN-SUFFIX,foxmail.com
 DOMAIN-SUFFIX,gtimg.com
 DOMAIN-SUFFIX,idqqimg.com
@@ -19,10 +20,17 @@ DOMAIN-SUFFIX,tenpay.com
 DOMAIN-SUFFIX,wechat.com
 DOMAIN-SUFFIX,weixin.com
 DOMAIN-SUFFIX,weiyun.com
+
+# weibo
 DOMAIN-SUFFIX,weibo.cn
+DOMAIN-SUFFIX,m.weibo.cn
 DOMAIN-SUFFIX,weibo.com
 DOMAIN-SUFFIX,weibocdn.com
+DOMAIN-SUFFIX,sinaimg.cn
 DOMAIN-KEYWORD,weibo
+DOMAIN-KEYWORD,sina
+
+# other
 DOMAIN,apiintl.biliapi.net
 DOMAIN,aqqmusic.tc.qq.com
 DOMAIN,intel-cache.m.iqiyi.com
