@@ -58,6 +58,60 @@ function main(config) {
     type: "http",
   };
 
+  config['rule-providers']['Video'] = {
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/video.list",
+    path: "./ruleset/video.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
+  config['rule-providers']['Twitter'] = {
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/video.list",
+    path: "./ruleset/twitter.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
+  config['rule-providers']['Grok'] = {
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/video.list",
+    path: "./ruleset/grok.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
+  config['rule-providers']['ChinaMedia'] = {
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list",
+    path: "./ruleset/ChinaMedia.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
+  config['rule-providers']['Direct'] = {
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/direct.list",
+    path: "./ruleset/Direct.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
+  config['rule-providers']['Reject'] = {
+    url: "https://raw.githubusercontent.com/leeyorke/rules/refs/heads/main/rulesets/reject.list",
+    path: "./ruleset/Reject.list",
+    behavior: "classical",
+    interval: 86400,
+    format: "text",
+    type: "http",
+  };
+
   // ===== 添加规则（插入到最前面） =====
   config.rules.unshift("DOMAIN-KEYWORD,huggingface,Default Proxy");
   config.rules.unshift("DOMAIN-SUFFIX,zenmux.ai,Default Proxy");
@@ -65,8 +119,14 @@ function main(config) {
   config.rules.unshift("RULE-SET,Google,Default Proxy");
   config.rules.unshift("RULE-SET,Gemini,Default Proxy");
   config.rules.unshift("RULE-SET,OpenAI,Default Proxy");
+  config.rules.unshift("RULE-SET,Grok,Default Proxy");
   config.rules.unshift("RULE-SET,Copilot,Default Proxy");
   config.rules.unshift("RULE-SET,Media,Default Proxy");
+  config.rules.unshift("RULE-SET,Reject,REJECT");
+  config.rules.unshift("RULE-SET,Reject,REJECT");
+  config.rules.unshift("RULE-SET,Direct,DIRECT");
+  config.rules.unshift("RULE-SET,ChinaMedia,DIRECT");
+  config.rules.unshift("RULE-SET,Video,DIRECT");
 
   return config;
 }
